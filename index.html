@@ -31,7 +31,7 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
 .panel:hover{transform:translateY(-4px);box-shadow:24px 24px 64px var(--shd),-16px -16px 48px var(--shl);}
 .panel-label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--txt3);margin-bottom:14px;}
 
-/* Hero Panel */
+
 .panel-hero{grid-column:1/3;min-height:300px;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden;}
 .hero-bg{position:absolute;top:-50%;left:-50%;right:-50%;bottom:-50%;background:radial-gradient(circle at 50% 50%,var(--peach),transparent 60%),radial-gradient(circle at 80% 20%,var(--blue),transparent 50%),radial-gradient(circle at 20% 80%,var(--lav),transparent 50%);filter:blur(40px);opacity:0.6;z-index:0;animation:bgMove 15s infinite alternate ease-in-out;}
 @keyframes bgMove{0%{transform:scale(1) translate(0,0) rotate(0deg);}50%{transform:scale(1.2) translate(5%,5%) rotate(10deg);}100%{transform:scale(1) translate(-5%,-5%) rotate(-10deg);}}
@@ -40,13 +40,13 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
 .hero-sub{font-size:1.1rem;color:var(--txt2);z-index:2;margin-top:6px;font-weight:400;}
 .hero-badge{display:inline-block;padding:6px 18px;border-radius:var(--rp);background:linear-gradient(135deg,var(--blue),var(--peach-l));font-size:.85rem;font-weight:600;color:var(--txt);z-index:2;margin-top:12px;box-shadow:3px 3px 8px var(--shd),-2px -2px 6px var(--shl);}
 
-/* Birthdate Panel */
+
 .panel-birth{grid-column:3/4;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(135deg,var(--panel),var(--peach-l));}
 .birth-date{font-size:1.6rem;font-weight:700;margin:8px 0 4px;}
 .birth-age{font-size:1rem;color:var(--txt2);font-weight:500;}
 .birth-icon{font-size:2.5rem;margin-bottom:4px;}
 
-/* Calendar Panel */
+
 .panel-calendar{grid-column:4/5;grid-row:1/3;display:flex;flex-direction:column;align-items:center;}
 .countdown-container{display:flex;flex-direction:column;gap:10px;width:100%;margin-top:10px;}
 .cd-box{background:var(--panel2);border-radius:12px;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;box-shadow:inset 3px 3px 6px var(--shd),inset -2px -2px 4px var(--shl);transition:transform 0.3s ease;}
@@ -54,22 +54,22 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
 .cd-val{font-size:1.8rem;font-weight:800;color:var(--txt);background:linear-gradient(135deg,var(--peach),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .cd-lbl{font-size:.85rem;font-weight:600;color:var(--txt2);text-transform:uppercase;letter-spacing:2px;}
 
-/* Chart Panel - Horizontal Bars */
+
 .panel-chart{grid-column:1/3;min-height:260px;}
 .bar-chart-container{display:flex;flex-direction:column;gap:16px;margin-top:20px;z-index:2;position:relative;padding-right:10px;}
 .bar-row{display:flex;align-items:center;gap:12px;}
-.bar-label-txt{width:70px;font-size:.85rem;font-weight:600;color:var(--txt2);text-align:right;}
+.bar-label-txt{width:85px;display:flex;align-items:center;justify-content:flex-end;white-space:nowrap;font-size:.85rem;font-weight:600;color:var(--txt2);text-align:right;}
 .bar-track{flex:1;height:16px;background:var(--panel2);border-radius:10px;box-shadow:inset 3px 3px 8px var(--shd),inset -2px -2px 6px var(--shl);overflow:hidden;}
 .bar-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--peach),var(--blue));box-shadow:2px 0 8px rgba(0,0,0,0.1);width:0;transition:width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);}
 
-/* Donut Panel */
+
 .panel-donut{grid-column:3/4;min-height:260px;display:flex;flex-direction:column;align-items:center;}
 .panel-donut canvas{width:150px;height:150px;}
 .donut-legend{display:flex;flex-direction:column;gap:8px;margin-top:14px;}
 .legend-item{display:flex;align-items:center;font-size:.85rem;color:var(--txt2);font-weight:600;}
 .leg-color{width:14px;height:14px;border-radius:50%;margin-right:10px;box-shadow:inset 1px 1px 3px rgba(255,255,255,0.5), 2px 2px 5px var(--shd);}
 
-/* Buttons Panel */
+
 .panel-buttons{grid-column:1/2;display:flex;flex-direction:column;gap:12px;justify-content:center;}
 .btn-tactile{border:none;padding:14px 24px;border-radius:var(--rp);font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;transition:all 0.3s cubic-bezier(.25,.46,.45,.94);box-shadow:5px 5px 14px var(--shd),-4px -4px 10px var(--shl);position:relative;overflow:hidden;}
 .btn-tactile::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(255,255,255,0.3),transparent);border-radius:var(--rp);pointer-events:none;}
@@ -79,7 +79,7 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
 .btn-gallery{background:linear-gradient(135deg,var(--blue),var(--blue-m));color:var(--txt);}
 .btn-confetti{background:linear-gradient(135deg,var(--lav-l),var(--lav));color:var(--txt);}
 
-/* Timeline Panel */
+
 .panel-timeline{grid-column:2/4;min-height:160px;}
 .timeline{display:flex;align-items:flex-start;justify-content:space-between;margin-top:10px;position:relative;padding:0 10px;}
 .timeline::before{content:'';position:absolute;top:18px;left:30px;right:30px;height:3px;background:linear-gradient(90deg,var(--peach),var(--blue),var(--lav),var(--pink));border-radius:2px;opacity:0.5;}
@@ -94,12 +94,12 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
 .tl-year{font-size:.85rem;font-weight:700;color:var(--txt);}
 .tl-text{font-size:.7rem;color:var(--txt3);text-align:center;margin-top:2px;}
 
-/* Wishes Panel */
+
 .panel-wishes{grid-column:4/5;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,var(--panel),var(--lav-l));}
 .wishes-text{font-size:.95rem;line-height:1.7;color:var(--txt2);}
 .wishes-heart{font-size:2rem;text-align:center;margin-top:10px;}
 
-/* Modal Overlay */
+
 .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(90,74,66,0.5);backdrop-filter:blur(8px);z-index:500;display:none;justify-content:center;align-items:center;opacity:0;transition:opacity 0.4s ease;}
 .modal-overlay.active{display:flex;opacity:1;}
 .modal-content{background:var(--panel);border-radius:var(--r);padding:40px;max-width:500px;width:90%;box-shadow:12px 12px 30px var(--shd),-8px -8px 20px var(--shl);text-align:center;transform:scale(0.9);transition:transform 0.4s cubic-bezier(.25,.46,.45,.94);}
@@ -109,10 +109,10 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
 .modal-close{margin-top:20px;border:none;padding:10px 28px;border-radius:var(--rp);background:linear-gradient(135deg,var(--peach-l),var(--peach));font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;box-shadow:4px 4px 10px var(--shd),-3px -3px 8px var(--shl);transition:all 0.3s ease;}
 .modal-close:hover{transform:translateY(-2px);}
 
-/* Confetti Canvas */
+
 #confetti-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1000;display:none;}
 
-/* Gallery Scroll */
+
 .gallery-row{display:flex;gap:14px;overflow-x:auto;padding:10px 0;scroll-snap-type:x mandatory;scroll-behavior:smooth;}
 .gallery-row::-webkit-scrollbar{height:10px;}
 .gallery-row::-webkit-scrollbar-track{background:rgba(255,255,255,0.2);border-radius:10px;}
@@ -122,10 +122,10 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
 .gallery-card img{width:100%;height:100%;object-fit:cover;border-radius:var(--rs);transition:transform 0.4s ease;pointer-events:none;}
 .gallery-card:hover img{transform:scale(1.08);}
 
-/* Decorative floating spheres */
+
 .deco-sphere{position:absolute;border-radius:50%;pointer-events:none;box-shadow:4px 4px 10px var(--shd),-3px -3px 8px var(--shl);}
 
-/* Responsive */
+
 @media(max-width:1024px){
 .dashboard{grid-template-columns:repeat(2,1fr);}
 .panel-hero{grid-column:1/3;}
@@ -143,12 +143,12 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
 .hero-name{font-size:1.4rem;}
 }
 
-/* Icons */
+
 .inline-icon{width:18px;height:18px;display:inline-block;vertical-align:sub;margin-right:6px;stroke-width:2px;opacity:0.8;}
 .btn-icon{width:18px;height:18px;display:inline-block;vertical-align:sub;margin-left:8px;stroke-width:2px;}
 .birth-icon svg{width:48px;height:48px;color:var(--peach);}
 
-/* Dark Mode */
+
 [data-theme="dark"]{
 --bg:#1a1614;--bg2:#241d1a;
 --peach:#c45854;--peach-l:#8c423f;
@@ -167,15 +167,15 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
 [data-theme="dark"] .btn-gallery{background:linear-gradient(135deg,#997a2c,#cca43b);}
 [data-theme="dark"] .btn-confetti{background:linear-gradient(135deg,#8f5636,#c47345);}
 
-/* Theme Toggle */
+
 .theme-toggle{position:fixed;top:20px;right:20px;z-index:100;width:52px;height:28px;border-radius:14px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--blue),var(--lav));box-shadow:4px 4px 10px var(--shd),-2px -2px 6px var(--shl);transition:all 0.4s ease;display:flex;align-items:center;padding:3px;}
 .theme-toggle .toggle-knob{width:22px;height:22px;border-radius:50%;background:var(--panel);box-shadow:2px 2px 6px rgba(0,0,0,0.2);transition:transform 0.4s cubic-bezier(.68,-.55,.27,1.55);display:flex;align-items:center;justify-content:center;font-size:12px;}
 [data-theme="dark"] .theme-toggle .toggle-knob{transform:translateX(24px);}
 
-/* Panel Subtitle */
+
 .panel-desc{font-size:.78rem;color:var(--txt3);margin-top:-8px;margin-bottom:12px;font-weight:400;}
 
-/* Lightbox */
+
 .lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:600;display:none;align-items:center;justify-content:center;cursor:zoom-out;}
 .lightbox.active{display:flex;}
 .lightbox img{max-width:90vw;max-height:85vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.5);object-fit:contain;animation:lbIn 0.3s ease;}
@@ -188,19 +188,19 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
 .lightbox .lb-counter{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.6);font-size:.85rem;}
 @keyframes lbIn{from{transform:scale(0.85);opacity:0}to{transform:scale(1);opacity:1}}
 
-/* Gallery drag */
+
 .gallery-row{cursor:grab;}
 .gallery-row.dragging{cursor:grabbing;scroll-snap-type:none;}
 .gallery-row.dragging .gallery-card{pointer-events:none;}
 .gallery-card{cursor:pointer;transition:transform 0.3s ease,box-shadow 0.3s ease;}
 .gallery-card:hover{transform:translateY(-3px);box-shadow:6px 6px 16px var(--shd),-4px -4px 10px var(--shl);}
 
-/* Bar chart labels */
+
 </style>
 </head>
 <body>
 
-<!-- SVG Sprite Sheet -->
+
 <svg width="0" height="0" style="display:none; position:absolute;">
   <symbol id="icon-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></symbol>
   <symbol id="icon-cake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/><path d="M7 8v2"/><path d="M12 8v2"/><path d="M17 8v2"/><path d="M7 4h.01"/><path d="M12 4h.01"/><path d="M17 4h.01"/></symbol>
@@ -221,19 +221,19 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
   <symbol id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
 </svg>
 
-<!-- Background Blobs -->
+
 <div class="bg-blobs">
   <div class="blob-1"></div>
   <div class="blob-2"></div>
 </div>
 
-<!-- Theme Toggle -->
+
 <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
   <div class="toggle-knob" id="toggle-knob"><svg class="inline-icon" style="margin:0;"><use href="#icon-sun"></use></svg></div>
 </button>
 
 <div class="dashboard" id="dashboard">
-  <!-- Hero Panel -->
+
   <div class="panel panel-hero" id="hero-panel">
     <div class="hero-bg"></div>
     <p class="hero-sub"><svg class="inline-icon" style="color:var(--peach);"><use href="#icon-sparkles"></use></svg> Happy Birthday <svg class="inline-icon" style="color:var(--peach);margin-left:6px;margin-right:0;"><use href="#icon-sparkles"></use></svg></p>
@@ -243,7 +243,7 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
     <div class="deco-sphere" style="width:14px;height:14px;top:50px;right:80px;background:linear-gradient(135deg,var(--peach-l),var(--peach));"></div>
   </div>
 
-  <!-- Birthdate Panel -->
+
   <div class="panel panel-birth" id="birth-panel">
     <div class="panel-label">Birthday</div>
     <div class="birth-icon"><svg><use href="#icon-gift"></use></svg></div>
@@ -251,7 +251,7 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
     <div class="birth-age">Celebrating Year 25</div>
   </div>
 
-  <!-- Calendar Panel -->
+
   <div class="panel panel-calendar" id="calendar-panel">
     <div class="panel-label">Next Birthday In</div>
     <div class="countdown-container">
@@ -260,9 +260,12 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
       <div class="cd-box"><div class="cd-val" id="cd-mins">--</div><div class="cd-lbl">Mins</div></div>
       <div class="cd-box"><div class="cd-val" id="cd-secs">--</div><div class="cd-lbl">Secs</div></div>
     </div>
+    <div style="margin-top: 24px; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 5px 5px 14px var(--shd), -4px -4px 10px var(--shl);">
+      <img src="gallery/Calender%20GIF.gif" alt="Calendar Celebration" style="width: 100%; display: block;">
+    </div>
   </div>
 
-  <!-- Favorites Panel -->
+
   <div class="panel panel-chart" id="chart-panel">
     <div class="panel-label">Sarah's Favorite Things</div>
     <div class="panel-desc">What makes her smile the most <svg class="inline-icon" style="color:var(--blue-m);margin:0 0 0 4px;"><use href="#icon-heart"></use></svg></div>
@@ -276,7 +279,7 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
     </div>
   </div>
 
-  <!-- Donut Chart Panel -->
+
   <div class="panel panel-donut" id="donut-panel">
     <div class="panel-label">Life So Far</div>
     <div class="panel-desc">Her beautiful journey in chapters</div>
@@ -288,7 +291,7 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
     </div>
   </div>
 
-  <!-- Buttons Panel -->
+
   <div class="panel panel-buttons" id="buttons-panel">
     <div class="panel-label">Interact <svg class="inline-icon"><use href="#icon-sparkles"></use></svg></div>
     <div class="panel-desc">Try these birthday surprises</div>
@@ -297,7 +300,7 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
     <button class="btn-tactile btn-confetti" id="btn-confetti" onclick="launchConfetti()"><svg class="inline-icon"><use href="#icon-sparkles"></use></svg> Start Confetti</button>
   </div>
 
-  <!-- Timeline Panel -->
+
   <div class="panel panel-timeline" id="timeline-panel">
     <div class="panel-label">Sarah's Journey</div>
     <div class="panel-desc">Milestones that shaped her story</div>
@@ -310,7 +313,7 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
     </div>
   </div>
 
-  <!-- Gallery Panel -->
+
   <div class="panel panel-wishes" id="wishes-panel">
     <div class="panel-label">Our Memories <svg class="inline-icon"><use href="#icon-camera"></use></svg></div>
     <div class="panel-desc">Drag to scroll · Click to view</div>
@@ -341,7 +344,7 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
   </div>
 </div>
 
-<!-- Wishes Modal -->
+
 <div class="modal-overlay" id="wishes-modal">
   <div class="modal-content">
     <h2><svg class="inline-icon"><use href="#icon-cake"></use></svg> Happy 25th Birthday, Sarah! <svg class="inline-icon"><use href="#icon-cake"></use></svg></h2>
@@ -350,7 +353,7 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
   </div>
 </div>
 
-<!-- Lightbox -->
+
 <div class="lightbox" id="lightbox">
   <div class="lb-close" onclick="closeLightbox()">✕</div>
   <div class="lb-nav lb-prev" onclick="navLightbox(-1)">‹</div>
@@ -359,15 +362,15 @@ body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt)
   <div class="lb-counter" id="lb-counter"></div>
 </div>
 
-<!-- Confetti Overlay Canvas -->
+
 <canvas id="confetti-canvas"></canvas>
 
-<!-- Three.js CDN -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-// =============================================
-// EASING FUNCTIONS (Quartic, Quintic, Bezier)
-// =============================================
+
+
+
 const Ease={
   quartic:t=>t<.5?8*t*t*t*t:1-8*--t*t*t*t,
   quintic:t=>t<.5?16*t*t*t*t*t:1+16*--t*t*t*t*t,
@@ -376,9 +379,9 @@ const Ease={
   backOut:t=>{const c=1.70158;return 1+(--t)*t*((c+1)*t+c);}
 };
 
-// =============================================
-// UI INTERACTIONS
-// =============================================
+
+
+
 function showWishes(){
   document.getElementById('wishes-modal').classList.add('active');
   const h=document.getElementById('wishes-heart');
@@ -389,7 +392,7 @@ function showWishes(){
 function closeWishes(){document.getElementById('wishes-modal').classList.remove('active');}
 function scrollGallery(){const g=document.getElementById('gallery-row');g.scrollBy({left:200,behavior:'smooth'});}
 
-// Theme Toggle
+
 function toggleTheme(){
   const body=document.body;
   if(body.getAttribute('data-theme')==='dark'){
@@ -401,7 +404,7 @@ function toggleTheme(){
   }
 }
 
-// Lightbox
+
 let lbImages=[],lbIndex=0;
 function initLightbox(){
   const cards=document.querySelectorAll('.gallery-card');
@@ -429,7 +432,7 @@ function updateLightbox(){
   document.getElementById('lb-img').src=lbImages[lbIndex];
   document.getElementById('lb-counter').innerText=`${lbIndex+1} / ${lbImages.length}`;
 }
-// Lightbox keyboard nav
+
 document.addEventListener('keydown',e=>{
   if(!document.getElementById('lightbox').classList.contains('active'))return;
   if(e.key==='Escape')closeLightbox();
@@ -438,18 +441,18 @@ document.addEventListener('keydown',e=>{
 });
 
 
-// (Functions defined above)
 
-// =============================================
-// COUNTDOWN TIMER
-// =============================================
+
+
+
+
 function initCountdown(){
   function updateCountdown(){
     const now = new Date();
     let nextYear = now.getFullYear();
-    let birthday = new Date(nextYear, 4, 4); // May 4 (Month is 0-indexed)
+    let birthday = new Date(nextYear, 4, 4);
     
-    // If today is past the midnight of May 4th, target next year
+
     if(now.getTime() > birthday.getTime()){
       nextYear++;
       birthday = new Date(nextYear, 4, 4);
@@ -486,9 +489,9 @@ function initBarAnim(){
   observer.observe(document.getElementById('chart-panel'));
 }
 
-// =============================================
-// DONUT CHART - Canvas 2D with Neumorphic Style
-// =============================================
+
+
+
 const donutData=[
   {label:'Being beautiful',value:40,color:'#fbc9c6'},
   {label:'Being cute',value:35,color:'#fad764'},
@@ -518,7 +521,7 @@ function drawDonut(){
   const eased=Ease.quartic(animProg);
   const totalAngle=eased*Math.PI*2;
 
-  // Background ring shadow
+
   ctx.beginPath();ctx.arc(cx,cy,outer+2,0,Math.PI*2);
   ctx.arc(cx,cy,inner-2,0,Math.PI*2,true);ctx.closePath();
   ctx.fillStyle='rgba(60,40,20,0.06)';ctx.fill();
@@ -530,13 +533,13 @@ function drawDonut(){
     ctx.beginPath();ctx.arc(cx,cy,outer,angle,angle+sweep);
     ctx.arc(cx,cy,inner,angle+sweep,angle,true);ctx.closePath();
     ctx.fillStyle=d.color;ctx.fill();
-    // Inner highlight
+
     ctx.beginPath();ctx.arc(cx,cy,outer-4,angle+0.02,angle+sweep-0.02);
     ctx.strokeStyle='rgba(255,255,255,0.3)';ctx.lineWidth=2;ctx.stroke();
     angle+=sweep;
   });
 
-  // Center circle
+
   ctx.beginPath();ctx.arc(cx,cy,inner-1,0,Math.PI*2);
   ctx.fillStyle='#f8f2ec';ctx.fill();
   ctx.fillStyle='#4a3f35';ctx.font='700 18px Outfit';ctx.textAlign='center';ctx.textBaseline='middle';
@@ -553,9 +556,9 @@ function resizeSphere(){
   sphereCamera.aspect=w/h;sphereCamera.updateProjectionMatrix();
 }
 
-// =============================================
-// CONFETTI - 3D Mesh Pieces (Small Tumbling Planes)
-// =============================================
+
+
+
 let confettiRenderer,confettiScene,confettiCamera;
 let confettiPieces=[],confettiActive=false,confettiStart=0;
 const CONFETTI_COUNT=200;
@@ -639,9 +642,9 @@ function launchConfetti(){
   btn.style.transform='scale(0.95)';setTimeout(()=>btn.style.transform='',200);
 }
 
-// =============================================
-// ANIMATION LOOP
-// =============================================
+
+
+
 let startTime=Date.now();
 function animate(){
   requestAnimationFrame(animate);
@@ -651,21 +654,21 @@ function animate(){
   updateConfetti();
 }
 
-// =============================================
-// INIT
-// =============================================
+
+
+
 window.addEventListener('DOMContentLoaded',()=>{
   initCountdown();
   initDonut();
   initBarAnim();
-  // Confetti initialized lazily on first click
+
   initLightbox();
   animate();
 });
 
-// Handle resize
+
 window.addEventListener('resize',()=>{
-  // Empty for now
+
 });
 </script>
 
