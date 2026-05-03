@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Sarah! 🎂</title>
+<meta name="description" content="A personalized interactive birthday greeting for Sarah Mae B. Mangilaya">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f48f8b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8'/%3E%3Cpath d='M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1'/%3E%3Cpath d='M2 21h20'/%3E%3Cpath d='M7 8v2'/%3E%3Cpath d='M12 8v2'/%3E%3Cpath d='M17 8v2'/%3E%3Cpath d='M7 4h.01'/%3E%3Cpath d='M12 4h.01'/%3E%3Cpath d='M17 4h.01'/%3E%3C/svg%3E" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#F7F3F0;--bg2:#efeae6;
+--peach:#f48f8b;--peach-l:#fbc9c6;
+--blue:#fad764;--blue-m:#e8c347;
+--lav:#f6a570;--lav-l:#fbd8c0;
+--pink:#f27c94;--sand:#e8d1bc;
+--panel:rgba(255,255,255,0.45);--panel2:rgba(255,255,255,0.6);
+--txt:#3a322c;--txt2:#7a6b60;--txt3:#b8a89c;
+--shd:#d9d6d3;--shl:#ffffff;
+--r:32px;--rs:20px;--rp:50px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background-color:var(--bg);color:var(--txt);min-height:100vh;overflow-x:hidden;position:relative;}
+.bg-blobs{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;overflow:hidden;}
+.blob-1{position:absolute;top:-20%;left:-10%;width:600px;height:600px;background:var(--peach-l);border-radius:50%;filter:blur(100px);opacity:0.6;animation:float 8s ease-in-out infinite;}
+.blob-2{position:absolute;bottom:-20%;right:-10%;width:500px;height:500px;background:var(--blue);border-radius:50%;filter:blur(100px);opacity:0.5;animation:float 10s ease-in-out infinite reverse;}
+@keyframes float{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-30px) scale(1.05);}}
+.dashboard{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:min-content;gap:24px;padding:40px;max-width:1400px;margin:0 auto;}
+.panel{background:var(--panel);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.5);border-radius:var(--r);padding:30px;box-shadow:20px 20px 60px var(--shd),-20px -20px 60px var(--shl);position:relative;overflow:hidden;transition:transform 0.4s cubic-bezier(.25,.46,.45,.94),box-shadow 0.4s ease;}
+.panel:hover{transform:translateY(-4px);box-shadow:24px 24px 64px var(--shd),-16px -16px 48px var(--shl);}
+.panel-label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--txt3);margin-bottom:14px;}
+
+/* Hero Panel */
+.panel-hero{grid-column:1/3;min-height:300px;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;top:-50%;left:-50%;right:-50%;bottom:-50%;background:radial-gradient(circle at 50% 50%,var(--peach),transparent 60%),radial-gradient(circle at 80% 20%,var(--blue),transparent 50%),radial-gradient(circle at 20% 80%,var(--lav),transparent 50%);filter:blur(40px);opacity:0.6;z-index:0;animation:bgMove 15s infinite alternate ease-in-out;}
+@keyframes bgMove{0%{transform:scale(1) translate(0,0) rotate(0deg);}50%{transform:scale(1.2) translate(5%,5%) rotate(10deg);}100%{transform:scale(1) translate(-5%,-5%) rotate(-10deg);}}
+[data-theme="dark"] .hero-bg{opacity:0.3;mix-blend-mode:screen;}
+.hero-name{font-size:2rem;font-weight:700;z-index:2;text-align:center;background:linear-gradient(135deg,var(--txt),#8c7a70);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:1.1rem;color:var(--txt2);z-index:2;margin-top:6px;font-weight:400;}
+.hero-badge{display:inline-block;padding:6px 18px;border-radius:var(--rp);background:linear-gradient(135deg,var(--blue),var(--peach-l));font-size:.85rem;font-weight:600;color:var(--txt);z-index:2;margin-top:12px;box-shadow:3px 3px 8px var(--shd),-2px -2px 6px var(--shl);}
+
+/* Birthdate Panel */
+.panel-birth{grid-column:3/4;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(135deg,var(--panel),var(--peach-l));}
+.birth-date{font-size:1.6rem;font-weight:700;margin:8px 0 4px;}
+.birth-age{font-size:1rem;color:var(--txt2);font-weight:500;}
+.birth-icon{font-size:2.5rem;margin-bottom:4px;}
+
+/* Calendar Panel */
+.panel-calendar{grid-column:4/5;grid-row:1/3;display:flex;flex-direction:column;align-items:center;}
+.countdown-container{display:flex;flex-direction:column;gap:10px;width:100%;margin-top:10px;}
+.cd-box{background:var(--panel2);border-radius:12px;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;box-shadow:inset 3px 3px 6px var(--shd),inset -2px -2px 4px var(--shl);transition:transform 0.3s ease;}
+.cd-box:hover{transform:translateX(-3px);}
+.cd-val{font-size:1.8rem;font-weight:800;color:var(--txt);background:linear-gradient(135deg,var(--peach),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.cd-lbl{font-size:.85rem;font-weight:600;color:var(--txt2);text-transform:uppercase;letter-spacing:2px;}
+
+/* Chart Panel - Horizontal Bars */
+.panel-chart{grid-column:1/3;min-height:260px;}
+.bar-chart-container{display:flex;flex-direction:column;gap:16px;margin-top:20px;z-index:2;position:relative;padding-right:10px;}
+.bar-row{display:flex;align-items:center;gap:12px;}
+.bar-label-txt{width:70px;font-size:.85rem;font-weight:600;color:var(--txt2);text-align:right;}
+.bar-track{flex:1;height:16px;background:var(--panel2);border-radius:10px;box-shadow:inset 3px 3px 8px var(--shd),inset -2px -2px 6px var(--shl);overflow:hidden;}
+.bar-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--peach),var(--blue));box-shadow:2px 0 8px rgba(0,0,0,0.1);width:0;transition:width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);}
+
+/* Donut Panel */
+.panel-donut{grid-column:3/4;min-height:260px;display:flex;flex-direction:column;align-items:center;}
+.panel-donut canvas{width:150px;height:150px;}
+.donut-legend{display:flex;flex-direction:column;gap:8px;margin-top:14px;}
+.legend-item{display:flex;align-items:center;font-size:.85rem;color:var(--txt2);font-weight:600;}
+.leg-color{width:14px;height:14px;border-radius:50%;margin-right:10px;box-shadow:inset 1px 1px 3px rgba(255,255,255,0.5), 2px 2px 5px var(--shd);}
+
+/* Buttons Panel */
+.panel-buttons{grid-column:1/2;display:flex;flex-direction:column;gap:12px;justify-content:center;}
+.btn-tactile{border:none;padding:14px 24px;border-radius:var(--rp);font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;transition:all 0.3s cubic-bezier(.25,.46,.45,.94);box-shadow:5px 5px 14px var(--shd),-4px -4px 10px var(--shl);position:relative;overflow:hidden;}
+.btn-tactile::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(255,255,255,0.3),transparent);border-radius:var(--rp);pointer-events:none;}
+.btn-tactile:hover{transform:translateY(-2px);box-shadow:7px 7px 18px var(--shd),-5px -5px 12px var(--shl);}
+.btn-tactile:active{transform:translateY(1px);box-shadow:2px 2px 6px var(--shd),-1px -1px 4px var(--shl);}
+.btn-wishes{background:linear-gradient(135deg,var(--peach-l),var(--peach));color:var(--txt);}
+.btn-gallery{background:linear-gradient(135deg,var(--blue),var(--blue-m));color:var(--txt);}
+.btn-confetti{background:linear-gradient(135deg,var(--lav-l),var(--lav));color:var(--txt);}
+
+/* Timeline Panel */
+.panel-timeline{grid-column:2/4;min-height:160px;}
+.timeline{display:flex;align-items:flex-start;justify-content:space-between;margin-top:10px;position:relative;padding:0 10px;}
+.timeline::before{content:'';position:absolute;top:18px;left:30px;right:30px;height:3px;background:linear-gradient(90deg,var(--peach),var(--blue),var(--lav),var(--pink));border-radius:2px;opacity:0.5;}
+.tl-item{display:flex;flex-direction:column;align-items:center;z-index:1;flex:1;}
+.tl-dot{width:36px;height:36px;border-radius:50%;box-shadow:4px 4px 10px var(--shd),-3px -3px 8px var(--shl);display:flex;align-items:center;justify-content:center;font-size:.7rem;margin-bottom:8px;transition:transform 0.3s ease;}
+.tl-dot:hover{transform:scale(1.15);}
+.tl-dot-1{background:linear-gradient(135deg,var(--peach-l),var(--peach));}
+.tl-dot-2{background:linear-gradient(135deg,var(--blue),var(--blue-m));}
+.tl-dot-3{background:linear-gradient(135deg,var(--lav-l),var(--lav));}
+.tl-dot-4{background:linear-gradient(135deg,var(--pink),#ecc8d0);}
+.tl-dot-5{background:linear-gradient(135deg,var(--sand),#e0d0b8);}
+.tl-year{font-size:.85rem;font-weight:700;color:var(--txt);}
+.tl-text{font-size:.7rem;color:var(--txt3);text-align:center;margin-top:2px;}
+
+/* Wishes Panel */
+.panel-wishes{grid-column:4/5;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,var(--panel),var(--lav-l));}
+.wishes-text{font-size:.95rem;line-height:1.7;color:var(--txt2);}
+.wishes-heart{font-size:2rem;text-align:center;margin-top:10px;}
+
+/* Modal Overlay */
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(90,74,66,0.5);backdrop-filter:blur(8px);z-index:500;display:none;justify-content:center;align-items:center;opacity:0;transition:opacity 0.4s ease;}
+.modal-overlay.active{display:flex;opacity:1;}
+.modal-content{background:var(--panel);border-radius:var(--r);padding:40px;max-width:500px;width:90%;box-shadow:12px 12px 30px var(--shd),-8px -8px 20px var(--shl);text-align:center;transform:scale(0.9);transition:transform 0.4s cubic-bezier(.25,.46,.45,.94);}
+.modal-overlay.active .modal-content{transform:scale(1);}
+.modal-content h2{font-size:1.6rem;margin-bottom:16px;background:linear-gradient(135deg,var(--peach),var(--lav));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.modal-content p{color:var(--txt2);line-height:1.8;font-size:.95rem;}
+.modal-close{margin-top:20px;border:none;padding:10px 28px;border-radius:var(--rp);background:linear-gradient(135deg,var(--peach-l),var(--peach));font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;box-shadow:4px 4px 10px var(--shd),-3px -3px 8px var(--shl);transition:all 0.3s ease;}
+.modal-close:hover{transform:translateY(-2px);}
+
+/* Confetti Canvas */
+#confetti-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1000;display:none;}
+
+/* Gallery Scroll */
+.gallery-row{display:flex;gap:14px;overflow-x:auto;padding:10px 0;scroll-snap-type:x mandatory;scroll-behavior:smooth;}
+.gallery-row::-webkit-scrollbar{height:10px;}
+.gallery-row::-webkit-scrollbar-track{background:rgba(255,255,255,0.2);border-radius:10px;}
+.gallery-row::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.15);border-radius:10px;border:2px solid rgba(255,255,255,0.4);background-clip:padding-box;}
+.gallery-row::-webkit-scrollbar-thumb:hover{background-color:rgba(0,0,0,0.3);}
+.gallery-card{min-width:160px;height:120px;border-radius:var(--rs);box-shadow:4px 4px 10px var(--shd),-3px -3px 8px var(--shl);scroll-snap-align:start;flex-shrink:0;overflow:hidden;cursor:pointer;}
+.gallery-card img{width:100%;height:100%;object-fit:cover;border-radius:var(--rs);transition:transform 0.4s ease;pointer-events:none;}
+.gallery-card:hover img{transform:scale(1.08);}
+
+/* Decorative floating spheres */
+.deco-sphere{position:absolute;border-radius:50%;pointer-events:none;box-shadow:4px 4px 10px var(--shd),-3px -3px 8px var(--shl);}
+
+/* Responsive */
+@media(max-width:1024px){
+.dashboard{grid-template-columns:repeat(2,1fr);}
+.panel-hero{grid-column:1/3;}
+.panel-birth{grid-column:1/2;}
+.panel-calendar{grid-column:2/3;grid-row:auto;}
+.panel-chart{grid-column:1/3;}
+.panel-donut{grid-column:1/2;}
+.panel-buttons{grid-column:2/3;}
+.panel-timeline{grid-column:1/3;}
+.panel-wishes{grid-column:1/3;}
+}
+@media(max-width:600px){
+.dashboard{grid-template-columns:1fr;padding:16px;}
+.panel-hero,.panel-birth,.panel-calendar,.panel-chart,.panel-donut,.panel-buttons,.panel-timeline,.panel-wishes{grid-column:1/2;}
+.hero-name{font-size:1.4rem;}
+}
+
+/* Icons */
+.inline-icon{width:18px;height:18px;display:inline-block;vertical-align:sub;margin-right:6px;stroke-width:2px;opacity:0.8;}
+.btn-icon{width:18px;height:18px;display:inline-block;vertical-align:sub;margin-left:8px;stroke-width:2px;}
+.birth-icon svg{width:48px;height:48px;color:var(--peach);}
+
+/* Dark Mode */
+[data-theme="dark"]{
+--bg:#1a1614;--bg2:#241d1a;
+--peach:#c45854;--peach-l:#8c423f;
+--blue:#cca43b;--blue-m:#997a2c;
+--lav:#c47345;--lav-l:#8f5636;
+--pink:#b84f65;--sand:#7a6b5d;
+--panel:rgba(40,32,28,0.6);--panel2:rgba(50,40,36,0.6);
+--txt:#ebdcd5;--txt2:#b0a098;--txt3:#80726a;
+--shd:#100d0c;--shl:#2a221f;
+}
+[data-theme="dark"] body{background-color:var(--bg);}
+[data-theme="dark"] .panel{border:1px solid rgba(255,255,255,0.05);}
+[data-theme="dark"] .hero-name{background:linear-gradient(135deg,#e8d8c8,#c8b8a8);-webkit-background-clip:text;background-clip:text;}
+[data-theme="dark"] .hero-badge{background:linear-gradient(135deg,#cca43b,#8c423f);color:#241c1a;}
+[data-theme="dark"] .btn-wishes{background:linear-gradient(135deg,#8c423f,#c45854);}
+[data-theme="dark"] .btn-gallery{background:linear-gradient(135deg,#997a2c,#cca43b);}
+[data-theme="dark"] .btn-confetti{background:linear-gradient(135deg,#8f5636,#c47345);}
+
+/* Theme Toggle */
+.theme-toggle{position:fixed;top:20px;right:20px;z-index:100;width:52px;height:28px;border-radius:14px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--blue),var(--lav));box-shadow:4px 4px 10px var(--shd),-2px -2px 6px var(--shl);transition:all 0.4s ease;display:flex;align-items:center;padding:3px;}
+.theme-toggle .toggle-knob{width:22px;height:22px;border-radius:50%;background:var(--panel);box-shadow:2px 2px 6px rgba(0,0,0,0.2);transition:transform 0.4s cubic-bezier(.68,-.55,.27,1.55);display:flex;align-items:center;justify-content:center;font-size:12px;}
+[data-theme="dark"] .theme-toggle .toggle-knob{transform:translateX(24px);}
+
+/* Panel Subtitle */
+.panel-desc{font-size:.78rem;color:var(--txt3);margin-top:-8px;margin-bottom:12px;font-weight:400;}
+
+/* Lightbox */
+.lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:600;display:none;align-items:center;justify-content:center;cursor:zoom-out;}
+.lightbox.active{display:flex;}
+.lightbox img{max-width:90vw;max-height:85vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.5);object-fit:contain;animation:lbIn 0.3s ease;}
+.lightbox .lb-close{position:absolute;top:20px;right:30px;color:#fff;font-size:2rem;cursor:pointer;opacity:0.7;transition:opacity 0.2s;}
+.lightbox .lb-close:hover{opacity:1;}
+.lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.5rem;cursor:pointer;opacity:0.6;transition:opacity 0.2s;padding:20px;user-select:none;}
+.lightbox .lb-nav:hover{opacity:1;}
+.lightbox .lb-prev{left:10px;}
+.lightbox .lb-next{right:10px;}
+.lightbox .lb-counter{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.6);font-size:.85rem;}
+@keyframes lbIn{from{transform:scale(0.85);opacity:0}to{transform:scale(1);opacity:1}}
+
+/* Gallery drag */
+.gallery-row{cursor:grab;}
+.gallery-row.dragging{cursor:grabbing;scroll-snap-type:none;}
+.gallery-row.dragging .gallery-card{pointer-events:none;}
+.gallery-card{cursor:pointer;transition:transform 0.3s ease,box-shadow 0.3s ease;}
+.gallery-card:hover{transform:translateY(-3px);box-shadow:6px 6px 16px var(--shd),-4px -4px 10px var(--shl);}
+
+/* Bar chart labels */
+</style>
+</head>
+<body>
+
+<!-- SVG Sprite Sheet -->
+<svg width="0" height="0" style="display:none; position:absolute;">
+  <symbol id="icon-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></symbol>
+  <symbol id="icon-cake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/><path d="M7 8v2"/><path d="M12 8v2"/><path d="M17 8v2"/><path d="M7 4h.01"/><path d="M12 4h.01"/><path d="M17 4h.01"/></symbol>
+  <symbol id="icon-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></symbol>
+  <symbol id="icon-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+  <symbol id="icon-palette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></symbol>
+  <symbol id="icon-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
+  <symbol id="icon-dance" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+  <symbol id="icon-game" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="12" y2="12"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="15" x2="15.01" y1="13" y2="13"/><line x1="18" x2="18.01" y1="11" y2="11"/><rect width="20" height="12" x="2" y="6" rx="2"/></symbol>
+  <symbol id="icon-food" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></symbol>
+  <symbol id="icon-cat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5c.67 0 1.35.09 2 .26 1.78-2 5.03-2.84 6.42-2.26 1.4.58-.42 7-.42 7 .57 1.07 1 2.24 1 3.48C21 17.9 16.97 21 12 21s-9-3.1-9-7.5c0-1.25.43-2.4 1-3.48 0 0-1.82-6.42-.42-7 1.39-.58 4.65.27 6.42 2.26A7.97 7.97 0 0 1 12 5Z"/><path d="M9 13h.01"/><path d="M15 13h.01"/><path d="M12 16s.5 1 1.5 1 1.5-1 1.5-1"/><path d="M12 16s-.5 1-1.5 1-1.5-1-1.5-1"/></symbol>
+  <symbol id="icon-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></symbol>
+  <symbol id="icon-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></symbol>
+  <symbol id="icon-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></symbol>
+  <symbol id="icon-grad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
+  <symbol id="icon-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+  <symbol id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+</svg>
+
+<!-- Background Blobs -->
+<div class="bg-blobs">
+  <div class="blob-1"></div>
+  <div class="blob-2"></div>
+</div>
+
+<!-- Theme Toggle -->
+<button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
+  <div class="toggle-knob" id="toggle-knob"><svg class="inline-icon" style="margin:0;"><use href="#icon-sun"></use></svg></div>
+</button>
+
+<div class="dashboard" id="dashboard">
+  <!-- Hero Panel -->
+  <div class="panel panel-hero" id="hero-panel">
+    <div class="hero-bg"></div>
+    <p class="hero-sub"><svg class="inline-icon" style="color:var(--peach);"><use href="#icon-sparkles"></use></svg> Happy Birthday <svg class="inline-icon" style="color:var(--peach);margin-left:6px;margin-right:0;"><use href="#icon-sparkles"></use></svg></p>
+    <h1 class="hero-name">Sarah Mae B. Mangilaya</h1>
+    <span class="hero-badge"><svg class="inline-icon"><use href="#icon-cake"></use></svg> Sarah's Special Day</span>
+    <div class="deco-sphere" style="width:20px;height:20px;top:20px;right:30px;background:linear-gradient(135deg,var(--blue),#c8dce8);"></div>
+    <div class="deco-sphere" style="width:14px;height:14px;top:50px;right:80px;background:linear-gradient(135deg,var(--peach-l),var(--peach));"></div>
+  </div>
+
+  <!-- Birthdate Panel -->
+  <div class="panel panel-birth" id="birth-panel">
+    <div class="panel-label">Birthday</div>
+    <div class="birth-icon"><svg><use href="#icon-gift"></use></svg></div>
+    <div class="birth-date">May 4, 2001</div>
+    <div class="birth-age">Celebrating Year 25</div>
+  </div>
+
+  <!-- Calendar Panel -->
+  <div class="panel panel-calendar" id="calendar-panel">
+    <div class="panel-label">Next Birthday In</div>
+    <div class="countdown-container">
+      <div class="cd-box"><div class="cd-val" id="cd-days">--</div><div class="cd-lbl">Days</div></div>
+      <div class="cd-box"><div class="cd-val" id="cd-hrs">--</div><div class="cd-lbl">Hrs</div></div>
+      <div class="cd-box"><div class="cd-val" id="cd-mins">--</div><div class="cd-lbl">Mins</div></div>
+      <div class="cd-box"><div class="cd-val" id="cd-secs">--</div><div class="cd-lbl">Secs</div></div>
+    </div>
+  </div>
+
+  <!-- Favorites Panel -->
+  <div class="panel panel-chart" id="chart-panel">
+    <div class="panel-label">Sarah's Favorite Things</div>
+    <div class="panel-desc">What makes her smile the most <svg class="inline-icon" style="color:var(--blue-m);margin:0 0 0 4px;"><use href="#icon-heart"></use></svg></div>
+    <div class="bar-chart-container" id="bar-container">
+      <div class="bar-row"><div class="bar-label-txt"><svg class="inline-icon"><use href="#icon-palette"></use></svg> Art</div><div class="bar-track"><div class="bar-fill" data-width="85%"></div></div></div>
+      <div class="bar-row"><div class="bar-label-txt"><svg class="inline-icon"><use href="#icon-music"></use></svg> Music</div><div class="bar-track"><div class="bar-fill" data-width="92%" style="background:linear-gradient(90deg,var(--blue),var(--peach));"></div></div></div>
+      <div class="bar-row"><div class="bar-label-txt"><svg class="inline-icon"><use href="#icon-dance"></use></svg> Dance</div><div class="bar-track"><div class="bar-fill" data-width="88%"></div></div></div>
+      <div class="bar-row"><div class="bar-label-txt"><svg class="inline-icon"><use href="#icon-game"></use></svg> Games</div><div class="bar-track"><div class="bar-fill" data-width="75%" style="background:linear-gradient(90deg,var(--blue),var(--peach));"></div></div></div>
+      <div class="bar-row"><div class="bar-label-txt"><svg class="inline-icon"><use href="#icon-food"></use></svg> Food</div><div class="bar-track"><div class="bar-fill" data-width="95%"></div></div></div>
+      <div class="bar-row"><div class="bar-label-txt"><svg class="inline-icon"><use href="#icon-cat"></use></svg> Cat</div><div class="bar-track"><div class="bar-fill" data-width="100%" style="background:linear-gradient(90deg,var(--blue),var(--peach));"></div></div></div>
+    </div>
+  </div>
+
+  <!-- Donut Chart Panel -->
+  <div class="panel panel-donut" id="donut-panel">
+    <div class="panel-label">Life So Far</div>
+    <div class="panel-desc">Her beautiful journey in chapters</div>
+    <canvas id="donut-canvas"></canvas>
+    <div class="donut-legend">
+      <div class="legend-item"><span class="leg-color" style="background:#fbc9c6;"></span> Being beautiful</div>
+      <div class="legend-item"><span class="leg-color" style="background:#fad764;"></span> Being cute</div>
+      <div class="legend-item"><span class="leg-color" style="background:#f6a570;"></span> Being pretty</div>
+    </div>
+  </div>
+
+  <!-- Buttons Panel -->
+  <div class="panel panel-buttons" id="buttons-panel">
+    <div class="panel-label">Interact <svg class="inline-icon"><use href="#icon-sparkles"></use></svg></div>
+    <div class="panel-desc">Try these birthday surprises</div>
+    <button class="btn-tactile btn-wishes" id="btn-wishes" onclick="showWishes()"><svg class="inline-icon"><use href="#icon-heart"></use></svg> View Wishes</button>
+    <button class="btn-tactile btn-gallery" id="btn-gallery" onclick="scrollGallery()"><svg class="inline-icon"><use href="#icon-camera"></use></svg> Scroll Gallery</button>
+    <button class="btn-tactile btn-confetti" id="btn-confetti" onclick="launchConfetti()"><svg class="inline-icon"><use href="#icon-sparkles"></use></svg> Start Confetti</button>
+  </div>
+
+  <!-- Timeline Panel -->
+  <div class="panel panel-timeline" id="timeline-panel">
+    <div class="panel-label">Sarah's Journey</div>
+    <div class="panel-desc">Milestones that shaped her story</div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot tl-dot-1"><svg class="inline-icon" style="margin:0;width:14px;height:14px;"><use href="#icon-star"></use></svg></div><div class="tl-year">2001</div><div class="tl-text">A Star is Born</div></div>
+      <div class="tl-item"><div class="tl-dot tl-dot-2"><svg class="inline-icon" style="margin:0;width:14px;height:14px;"><use href="#icon-book"></use></svg></div><div class="tl-year">2007</div><div class="tl-text">Started School</div></div>
+      <div class="tl-item"><div class="tl-dot tl-dot-3"><svg class="inline-icon" style="margin:0;width:14px;height:14px;"><use href="#icon-grad"></use></svg></div><div class="tl-year">2019</div><div class="tl-text">High School Grad</div></div>
+      <div class="tl-item"><div class="tl-dot tl-dot-4"><svg class="inline-icon" style="margin:0;width:14px;height:14px;"><use href="#icon-target"></use></svg></div><div class="tl-year">2023</div><div class="tl-text">New Adventures</div></div>
+      <div class="tl-item"><div class="tl-dot tl-dot-5"><svg class="inline-icon" style="margin:0;width:14px;height:14px;"><use href="#icon-cake"></use></svg></div><div class="tl-year">2026</div><div class="tl-text">25th Birthday!</div></div>
+    </div>
+  </div>
+
+  <!-- Gallery Panel -->
+  <div class="panel panel-wishes" id="wishes-panel">
+    <div class="panel-label">Our Memories <svg class="inline-icon"><use href="#icon-camera"></use></svg></div>
+    <div class="panel-desc">Drag to scroll · Click to view</div>
+    <div class="gallery-row" id="gallery-row">
+      <div class="gallery-card"><img src="gallery/IMG_20230722_213745.jpg" alt="Memory 1" loading="lazy"></div>
+      <div class="gallery-card"><img src="gallery/IMG_20230722_213817.jpg" alt="Memory 2" loading="lazy"></div>
+      <div class="gallery-card"><img src="gallery/IMG_20230722_215218 (1).jpg" alt="Memory 3" loading="lazy"></div>
+      <div class="gallery-card"><img src="gallery/IMG_20230722_215320.jpg" alt="Memory 4" loading="lazy"></div>
+      <div class="gallery-card"><img src="gallery/IMG_20230722_215321.jpg" alt="Memory 5" loading="lazy"></div>
+      <div class="gallery-card"><img src="gallery/IMG_20230722_215322.jpg" alt="Memory 6" loading="lazy"></div>
+      <div class="gallery-card"><img src="gallery/IMG_20230722_215323.jpg" alt="Memory 7" loading="lazy"></div>
+      <div class="gallery-card"><img src="gallery/IMG_20230722_215325.jpg" alt="Memory 8" loading="lazy"></div>
+      <div class="gallery-card"><img src="gallery/IMG_20230722_215334.jpg" alt="Memory 9" loading="lazy"></div>
+      <div class="gallery-card"><img src="gallery/IMG_20230722_215335.jpg" alt="Memory 10" loading="lazy"></div>
+      <div class="gallery-card"><img src="gallery/IMG_20230722_215336.jpg" alt="Memory 11" loading="lazy"></div>
+      <div class="gallery-card"><img src="gallery/IMG_20230722_215337.jpg" alt="Memory 12" loading="lazy"></div>
+      <div class="gallery-card"><img src="gallery/IMG_20230722_215338.jpg" alt="Memory 13" loading="lazy"></div>
+      <div class="gallery-card"><img src="gallery/IMG_20230722_215339.jpg" alt="Memory 14" loading="lazy"></div>
+      <div class="gallery-card"><img src="gallery/IMG_20230722_215340.jpg" alt="Memory 15" loading="lazy"></div>
+      <div class="gallery-card"><img src="gallery/IMG_20230722_215341.jpg" alt="Memory 16" loading="lazy"></div>
+      <div class="gallery-card"><img src="gallery/Messenger_creation_BF4BE56B-373C-4148-9ED1-C774042F9107.jpeg" alt="Memory 17" loading="lazy"></div>
+      <div class="gallery-card"><img src="gallery/Messenger_creation_AEF9A813-A8AB-46B1-9B45-B4132BEDD32A.jpeg" alt="Memory 18" loading="lazy"></div>
+      <div class="gallery-card"><img src="gallery/IMG_20230722_215403.jpg" alt="Memory 19" loading="lazy"></div>
+      <div class="gallery-card"><img src="gallery/IMG_20230722_215407.jpg" alt="Memory 20" loading="lazy"></div>
+    </div>
+    <div class="wishes-text" style="margin-top:12px;">Every moment with you is a treasure.</div>
+    <div class="wishes-heart" id="wishes-heart"><svg class="inline-icon" style="color:var(--pink);width:28px;height:28px;margin:0;"><use href="#icon-heart"></use></svg></div>
+  </div>
+</div>
+
+<!-- Wishes Modal -->
+<div class="modal-overlay" id="wishes-modal">
+  <div class="modal-content">
+    <h2><svg class="inline-icon"><use href="#icon-cake"></use></svg> Happy 25th Birthday, Sarah! <svg class="inline-icon"><use href="#icon-cake"></use></svg></h2>
+    <p>To the most amazing person, mommuuu. Today we celebrate YOU and the incredible 25 years of light, laughter, and love you've brought into this world. May this year bring you endless joy, beautiful surprises, and all the dreams your heart can hold. You are loved beyond measure. <svg class="inline-icon" style="color:var(--pink);margin:0;"><use href="#icon-heart"></use></svg></p>
+    <button class="modal-close" onclick="closeWishes()">Close <svg class="btn-icon" style="margin-right:0;"><use href="#icon-sparkles"></use></svg></button>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <div class="lb-close" onclick="closeLightbox()">✕</div>
+  <div class="lb-nav lb-prev" onclick="navLightbox(-1)">‹</div>
+  <img id="lb-img" src="" alt="Photo">
+  <div class="lb-nav lb-next" onclick="navLightbox(1)">›</div>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
+
+<!-- Confetti Overlay Canvas -->
+<canvas id="confetti-canvas"></canvas>
+
+<!-- Three.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// =============================================
+// EASING FUNCTIONS (Quartic, Quintic, Bezier)
+// =============================================
+const Ease={
+  quartic:t=>t<.5?8*t*t*t*t:1-8*--t*t*t*t,
+  quintic:t=>t<.5?16*t*t*t*t*t:1+16*--t*t*t*t*t,
+  smooth:t=>t*t*(3-2*t),
+  elastic:t=>t===0||t===1?t:Math.pow(2,-10*t)*Math.sin((t-0.075)*2*Math.PI/0.3)+1,
+  backOut:t=>{const c=1.70158;return 1+(--t)*t*((c+1)*t+c);}
+};
+
+// =============================================
+// UI INTERACTIONS
+// =============================================
+function showWishes(){
+  document.getElementById('wishes-modal').classList.add('active');
+  const h=document.getElementById('wishes-heart');
+  h.innerHTML = '<svg class="inline-icon" style="width:40px;height:40px;color:var(--pink);margin:0;"><use href="#icon-heart"></use></svg>';
+  h.style.transform='scale(0)';
+  setTimeout(()=>{h.style.transition='transform 0.5s cubic-bezier(.175,.885,.32,1.275)';h.style.transform='scale(1)';},300);
+}
+function closeWishes(){document.getElementById('wishes-modal').classList.remove('active');}
+function scrollGallery(){const g=document.getElementById('gallery-row');g.scrollBy({left:200,behavior:'smooth'});}
+
+// Theme Toggle
+function toggleTheme(){
+  const body=document.body;
+  if(body.getAttribute('data-theme')==='dark'){
+    body.removeAttribute('data-theme');
+    document.getElementById('toggle-knob').innerHTML='<svg class="inline-icon" style="margin:0;"><use href="#icon-sun"></use></svg>';
+  }else{
+    body.setAttribute('data-theme','dark');
+    document.getElementById('toggle-knob').innerHTML='<svg class="inline-icon" style="margin:0;color:#c8b8a8;"><use href="#icon-moon"></use></svg>';
+  }
+}
+
+// Lightbox
+let lbImages=[],lbIndex=0;
+function initLightbox(){
+  const cards=document.querySelectorAll('.gallery-card');
+  lbImages=Array.from(document.querySelectorAll('.gallery-card img')).map(img=>img.src);
+  
+  cards.forEach((card, i) => {
+    card.addEventListener('click', () => {
+      openLightbox(i);
+    });
+  });
+}
+function openLightbox(i){
+  lbIndex=i;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('active');
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('active');
+}
+function navLightbox(dir){
+  lbIndex=(lbIndex+dir+lbImages.length)%lbImages.length;
+  updateLightbox();
+}
+function updateLightbox(){
+  document.getElementById('lb-img').src=lbImages[lbIndex];
+  document.getElementById('lb-counter').innerText=`${lbIndex+1} / ${lbImages.length}`;
+}
+// Lightbox keyboard nav
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('lightbox').classList.contains('active'))return;
+  if(e.key==='Escape')closeLightbox();
+  if(e.key==='ArrowLeft')navLightbox(-1);
+  if(e.key==='ArrowRight')navLightbox(1);
+});
+
+
+// (Functions defined above)
+
+// =============================================
+// COUNTDOWN TIMER
+// =============================================
+function initCountdown(){
+  function updateCountdown(){
+    const now = new Date();
+    let nextYear = now.getFullYear();
+    let birthday = new Date(nextYear, 4, 4); // May 4 (Month is 0-indexed)
+    
+    // If today is past the midnight of May 4th, target next year
+    if(now.getTime() > birthday.getTime()){
+      nextYear++;
+      birthday = new Date(nextYear, 4, 4);
+    }
+    
+    const diff = birthday.getTime() - now.getTime();
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const m = Math.floor((diff / 1000 / 60) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+    
+    const daysEl = document.getElementById('cd-days');
+    if(daysEl){
+      daysEl.innerText = d.toString().padStart(2,'0');
+      document.getElementById('cd-hrs').innerText = h.toString().padStart(2,'0');
+      document.getElementById('cd-mins').innerText = m.toString().padStart(2,'0');
+      document.getElementById('cd-secs').innerText = s.toString().padStart(2,'0');
+    }
+  }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+}
+
+function initBarAnim(){
+  const observer=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){
+      const fills=document.querySelectorAll('.bar-fill');
+      fills.forEach((f,i)=>{
+        setTimeout(()=>{f.style.width=f.getAttribute('data-width');},i*150);
+      });
+      observer.disconnect();
+    }
+  },{threshold:0.3});
+  observer.observe(document.getElementById('chart-panel'));
+}
+
+// =============================================
+// DONUT CHART - Canvas 2D with Neumorphic Style
+// =============================================
+const donutData=[
+  {label:'Being beautiful',value:40,color:'#fbc9c6'},
+  {label:'Being cute',value:35,color:'#fad764'},
+  {label:'Being pretty',value:25,color:'#f6a570'}
+];
+let donutAnimated=false,donutAnimStart=0;
+
+function initDonut(){
+  const observer=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting&&!donutAnimated){donutAnimated=true;donutAnimStart=Date.now();}
+  },{threshold:0.3});
+  observer.observe(document.getElementById('donut-panel'));
+}
+
+function drawDonut(){
+  const canvas=document.getElementById('donut-canvas');
+  const ctx=canvas.getContext('2d');
+  const dpr=Math.min(window.devicePixelRatio,2);
+  const size=180;
+  canvas.width=size*dpr;canvas.height=size*dpr;
+  canvas.style.width=size+'px';canvas.style.height=size+'px';
+  ctx.scale(dpr,dpr);
+
+  const cx=size/2,cy=size/2,outer=72,inner=44;
+  const elapsed=donutAnimated?(Date.now()-donutAnimStart)/1000:0;
+  const animProg=Math.min(elapsed/1.2,1);
+  const eased=Ease.quartic(animProg);
+  const totalAngle=eased*Math.PI*2;
+
+  // Background ring shadow
+  ctx.beginPath();ctx.arc(cx,cy,outer+2,0,Math.PI*2);
+  ctx.arc(cx,cy,inner-2,0,Math.PI*2,true);ctx.closePath();
+  ctx.fillStyle='rgba(60,40,20,0.06)';ctx.fill();
+
+  let angle=-Math.PI/2;
+  const total=donutData.reduce((a,d)=>a+d.value,0);
+  donutData.forEach(d=>{
+    const sweep=(d.value/total)*totalAngle;
+    ctx.beginPath();ctx.arc(cx,cy,outer,angle,angle+sweep);
+    ctx.arc(cx,cy,inner,angle+sweep,angle,true);ctx.closePath();
+    ctx.fillStyle=d.color;ctx.fill();
+    // Inner highlight
+    ctx.beginPath();ctx.arc(cx,cy,outer-4,angle+0.02,angle+sweep-0.02);
+    ctx.strokeStyle='rgba(255,255,255,0.3)';ctx.lineWidth=2;ctx.stroke();
+    angle+=sweep;
+  });
+
+  // Center circle
+  ctx.beginPath();ctx.arc(cx,cy,inner-1,0,Math.PI*2);
+  ctx.fillStyle='#f8f2ec';ctx.fill();
+  ctx.fillStyle='#4a3f35';ctx.font='700 18px Outfit';ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillText('25',cx,cy-6);
+  ctx.fillStyle='#a89888';ctx.font='400 10px Outfit';
+  ctx.fillText('years',cx,cy+10);
+}
+
+function resizeSphere(){
+  if(!sphereRendererObj)return;
+  const canvas=document.getElementById('sphere-canvas');
+  const w=canvas.clientWidth;const h=canvas.clientHeight;
+  sphereRendererObj.setSize(w,h);
+  sphereCamera.aspect=w/h;sphereCamera.updateProjectionMatrix();
+}
+
+// =============================================
+// CONFETTI - 3D Mesh Pieces (Small Tumbling Planes)
+// =============================================
+let confettiRenderer,confettiScene,confettiCamera;
+let confettiPieces=[],confettiActive=false,confettiStart=0;
+const CONFETTI_COUNT=200;
+const CONFETTI_DURATION=5.0;
+const confettiColors=[
+  0xe8c4a8,0xb8d0e4,0xd4c4e0,0xe4b8c4,0xd8cab0,
+  0xf0d4be,0xa0b8cc,0xe0d4ec,0xecc8d0,0xf8e8d0
+];
+
+function initConfetti(){
+  const canvas=document.getElementById('confetti-canvas');
+  confettiRenderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+  confettiRenderer.setSize(window.innerWidth,window.innerHeight);
+  confettiRenderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  confettiRenderer.setClearColor(0x000000,0);
+  confettiScene=new THREE.Scene();
+  confettiCamera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,0.1,50);
+  confettiCamera.position.set(0,0,12);
+  confettiCamera.lookAt(0,0,0);
+  confettiScene.add(new THREE.AmbientLight(0xffffff,0.7));
+  const dl=new THREE.DirectionalLight(0xffffff,0.5);
+  dl.position.set(2,4,3);confettiScene.add(dl);
+}
+
+function spawnConfetti(){
+  confettiPieces.forEach(p=>{confettiScene.remove(p.mesh);p.mesh.geometry.dispose();p.mesh.material.dispose();});
+  confettiPieces=[];
+  for(let i=0;i<CONFETTI_COUNT;i++){
+    const w=0.08+Math.random()*0.12;
+    const h=0.05+Math.random()*0.08;
+    const geo=new THREE.PlaneGeometry(w,h);
+    const mat=new THREE.MeshStandardMaterial({
+      color:confettiColors[Math.floor(Math.random()*confettiColors.length)],
+      side:THREE.DoubleSide,roughness:0.5,metalness:0.1,transparent:true,opacity:1
+    });
+    const mesh=new THREE.Mesh(geo,mat);
+    mesh.position.set((Math.random()-0.5)*14,6+Math.random()*4,(Math.random()-0.5)*4);
+    mesh.rotation.set(Math.random()*Math.PI*2,Math.random()*Math.PI*2,Math.random()*Math.PI*2);
+    confettiScene.add(mesh);
+    confettiPieces.push({
+      mesh,vx:(Math.random()-0.5)*1.5,vy:-(Math.random()*1.5+0.5),vz:(Math.random()-0.5)*0.5,
+      rx:(Math.random()-0.5)*6,ry:(Math.random()-0.5)*6,rz:(Math.random()-0.5)*4,
+      wobbleF:2+Math.random()*3,wobbleA:0.3+Math.random()*0.5,delay:Math.random()*0.5
+    });
+  }
+  confettiActive=true;
+  confettiStart=performance.now()*0.001;
+}
+
+function updateConfetti(){
+  if(!confettiRenderer||!confettiActive)return;
+  const elapsed=performance.now()*0.001-confettiStart;
+  if(elapsed>CONFETTI_DURATION){
+    confettiPieces.forEach(p=>{confettiScene.remove(p.mesh);p.mesh.geometry.dispose();p.mesh.material.dispose();});
+    confettiPieces=[];confettiActive=false;confettiRenderer.clear();
+    document.getElementById('confetti-canvas').style.display='none';return;
+  }
+  const dt=0.016;
+  confettiPieces.forEach(p=>{
+    const t=Math.max(elapsed-p.delay,0);
+    if(t<=0)return;
+    p.vy-=2.5*dt;p.vy*=0.995;
+    p.mesh.position.x+=p.vx*dt+Math.sin(t*p.wobbleF)*p.wobbleA*dt;
+    p.mesh.position.y+=p.vy*dt;
+    p.mesh.position.z+=p.vz*dt;
+    p.mesh.rotation.x+=p.rx*dt;
+    p.mesh.rotation.y+=p.ry*dt;
+    p.mesh.rotation.z+=p.rz*dt;
+    if(elapsed>CONFETTI_DURATION-1.5)p.mesh.material.opacity=Math.max(0,1-(elapsed-(CONFETTI_DURATION-1.5))/1.5);
+  });
+  confettiRenderer.render(confettiScene,confettiCamera);
+}
+
+function launchConfetti(){
+  const canvas=document.getElementById('confetti-canvas');
+  canvas.style.display='block';
+  if(!confettiRenderer){initConfetti();}
+  else{confettiRenderer.setSize(window.innerWidth,window.innerHeight);confettiCamera.aspect=window.innerWidth/window.innerHeight;confettiCamera.updateProjectionMatrix();}
+  spawnConfetti();
+  const btn=document.getElementById('btn-confetti');
+  btn.style.transform='scale(0.95)';setTimeout(()=>btn.style.transform='',200);
+}
+
+// =============================================
+// ANIMATION LOOP
+// =============================================
+let startTime=Date.now();
+function animate(){
+  requestAnimationFrame(animate);
+  const t=(Date.now()-startTime)*0.001;
+
+  drawDonut();
+  updateConfetti();
+}
+
+// =============================================
+// INIT
+// =============================================
+window.addEventListener('DOMContentLoaded',()=>{
+  initCountdown();
+  initDonut();
+  initBarAnim();
+  // Confetti initialized lazily on first click
+  initLightbox();
+  animate();
+});
+
+// Handle resize
+window.addEventListener('resize',()=>{
+  // Empty for now
+});
+</script>
+
+</body>
+</html>
